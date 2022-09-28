@@ -2,18 +2,16 @@
   "name": "npm-hoisting-monorepo",
   "version": "0.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "clean": "find . -name 'node_modules' -type d -prune -exec rm -rf '{}' + && rm package-lock.json",
+    "list:ui": "pnpm --F ui ls"
   },
   "devDependencies": {
-    "eslint-config-custom": "*",
+    "eslint-config-custom": "workspace:*",
     "prettier": "latest",
     "turbo": "latest"
   },
@@ -21,5 +19,5 @@
     "node": ">=14.0.0"
   },
   "dependencies": {},
-  "packageManager": "npm@8.11.0"
+  "packageManager": "pnpm@7.12.2"
 }
